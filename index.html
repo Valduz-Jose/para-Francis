@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Para Francis — con amor desde Venezuela hasta Chile.">
+  <title>Para Francis 💛</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- Preconnect acorta el tiempo de carga de las fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!--
+    ══════════════════════════════════════════════════════════
+    CARTA DE ENTRADA — Se muestra automáticamente al cargar.
+    Toca/clic en cualquier punto para saltarla.
+    ══════════════════════════════════════════════════════════
+  -->
+  <div class="carta-overlay" id="carta-overlay"
+       aria-hidden="true" role="presentation"
+       title="Toca para continuar">
+    <div class="carta-mitad carta-mitad--sup" aria-hidden="true"></div>
+    <div class="carta-mitad carta-mitad--inf" aria-hidden="true"></div>
+    <div class="carta-centro">
+      <span class="carta-emoji">💌</span>
+      <p class="carta-nombre">Para Francis</p>
+      <p class="carta-sub">con todo el cariño 💛</p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════ HERO ══════ -->
+  <section class="hero" id="inicio" aria-label="Encabezado principal">
+
+    <!-- Halo de luz cálida (decorativo, CSS) -->
+    <div class="hero-aura" aria-hidden="true"></div>
+
+    <!-- Banderas + avión animados -->
+    <div class="hero-banderas fade-in" aria-label="De Venezuela a Chile">
+      <span class="bandera bandera-ve" role="img" aria-label="Bandera de Venezuela">🇻🇪</span>
+      <span class="hero-avion"         role="img" aria-label="Avión">✈️</span>
+      <span class="bandera bandera-cl" role="img" aria-label="Bandera de Chile">🇨🇱</span>
+    </div>
+
+    <!-- Nombre — Playfair Display con shimmer dorado -->
+    <h1 class="hero-titulo titulo-brillante slide-up delay-200">
+      Para Francis
+    </h1>
+
+    <!-- Subtítulo en cursiva -->
+    <p class="hero-subtitulo slide-up delay-400">
+      De Táchira a Chile,<br>el cariño no tiene frontera
+    </p>
+
+    <!-- Divisor + tagline -->
+    <div class="hero-detalle fade-in delay-700">
+      <hr class="divisor divisor--ancho">
+      <p class="hero-tagline">con amor, desde siempre ✨</p>
+    </div>
+
+    <!-- Flecha que lleva a la sección de mensajes -->
+    <a href="#mensajes" class="hero-scroll" aria-label="Ver mensajes">
+      <span class="hero-flecha" aria-hidden="true">↓</span>
+    </a>
+
+  </section>
+
+
+  <!-- ═════════════════════════════════════ MENSAJES ══════ -->
+  <section class="seccion seccion--mensajes" id="mensajes"
+           aria-label="Mensajes de cariño en ocho idiomas">
+    <div class="contenedor contenedor--ancho">
+
+      <!-- Cabecera de sección -->
+      <header class="seccion-cabecera texto-centro">
+        <span class="etiqueta">8 idiomas · 1 sentimiento</span>
+        <h2>El mundo entero te dice…</h2>
+        <p class="seccion-subtitulo">
+          porque el amor se dice en todos los idiomas
+        </p>
+        <hr class="divisor divisor--ancho">
+      </header>
+
+      <!-- Grid de postales — 8 tarjetas estilo polaroid / postal vintage -->
+      <div class="grid-postales" role="list">
+
+        <!-- ① Español ─────────────────────────────────── -->
+        <article class="postal" style="--rot:-1.5deg"
+                 data-animada role="listitem" lang="es">
+          <div class="postal-foto">
+            <span class="postal-emoji" aria-hidden="true">🌺</span>
+          </div>
+          <div class="postal-cuerpo">
+            <div class="postal-encabezado">
+              <span class="postal-idioma">Español</span>
+              <span class="postal-sello" aria-label="Venezuela">🇻🇪</span>
+            </div>
+            <p class="postal-frase">
+              «Vuelve pronto,<br>te extrañamos muchísimo»
+            </p>
+            <div class="postal-firma">— con todo el cariño ❤️</div>
+          </div>
+        </article>
+
+        <!-- ② English ─────────────────────────────────── -->
+        <article class="postal" style="--rot:2deg"
+                 data-animada role="listitem" lang="en">
+          <div class="postal-foto">
+            <span class="postal-emoji" aria-hidden="true">💫</span>
+          </div>
+          <div class="postal-cuerpo">
+            <div class="postal-encabezado">
+              <span class="postal-idioma">English</span>
+              <span class="postal-sello" aria-label="World">🌍</span>
+            </div>
+            <p class="postal-frase">
+              «Come back soon,<br>we miss you so much»
+            </p>
+            <div class="postal-firma">— with love ✨</div>
+          </div>
+        </article>
+
+        <!-- ③ Português ───────────────────────────────── -->
+        <article class="postal" style="--rot:-2.5deg"
+                 data-animada role="listitem" lang="pt">
+          <div class="postal-foto">
+            <span class="postal-emoji" aria-hidden="true">🌊</span>
+          </div>
+          <div class="postal-cuerpo">
+            <div class="postal-encabezado">
+              <span class="postal-idioma">Português</span>
+              <span class="postal-sello" aria-label="Brasil">🇧🇷</span>
+            </div>
+            <p class="postal-frase">
+              «Volta logo,<br>a saudade tá grande»
+            </p>
+            <div class="postal-firma">— com carinho 💚</div>
+          </div>
+        </article>
+
+        <!-- ④ Français ────────────────────────────────── -->
+        <article class="postal" style="--rot:1.2deg"
+                 data-animada role="listitem" lang="fr">
+          <div class="postal-foto">
+            <span class="postal-emoji" aria-hidden="true">🥐</span>
+          </div>
+          <div class="postal-cuerpo">
+            <div class="postal-encabezado">
+              <span class="postal-idioma">Français</span>
+              <span class="postal-sello" aria-label="France">🇫🇷</span>
+            </div>
+            <p class="postal-frase">
+              «Reviens vite,<br>tu nous manques tant»
+            </p>
+            <div class="postal-firma">— avec tendresse 🌹</div>
+          </div>
+        </article>
+
+        <!-- ⑤ Italiano ────────────────────────────────── -->
+        <article class="postal" style="--rot:2.5deg"
+                 data-animada role="listitem" lang="it">
+          <div class="postal-foto">
+            <span class="postal-emoji" aria-hidden="true">🎵</span>
+          </div>
+          <div class="postal-cuerpo">
+            <div class="postal-encabezado">
+              <span class="postal-idioma">Italiano</span>
+              <span class="postal-sello" aria-label="Italia">🇮🇹</span>
+            </div>
+            <p class="postal-frase">
+              «Torna presto,<br>ci manchi da morire»
+            </p>
+            <div class="postal-firma">— con affetto 🎭</div>
+          </div>
+        </article>
+
+        <!-- ⑥ 日本語 ─────────────────────────────────── -->
+        <article class="postal" style="--rot:-1deg"
+                 data-animada role="listitem" lang="ja">
+          <div class="postal-foto">
+            <span class="postal-emoji" aria-hidden="true">🌸</span>
+          </div>
+          <div class="postal-cuerpo">
+            <div class="postal-encabezado">
+              <span class="postal-idioma">日本語</span>
+              <span class="postal-sello" aria-label="Japan">🇯🇵</span>
+            </div>
+            <p class="postal-frase">«早く戻ってきてね、<br>会いたいよ»</p>
+            <div class="postal-firma">— 心を込めて 🌸</div>
+          </div>
+        </article>
+
+        <!-- ⑦ 한국어 ─────────────────────────────────── -->
+        <article class="postal" style="--rot:1.8deg"
+                 data-animada role="listitem" lang="ko">
+          <div class="postal-foto">
+            <span class="postal-emoji" aria-hidden="true">✨</span>
+          </div>
+          <div class="postal-cuerpo">
+            <div class="postal-encabezado">
+              <span class="postal-idioma">한국어</span>
+              <span class="postal-sello" aria-label="Korea">🇰🇷</span>
+            </div>
+            <p class="postal-frase">«빨리 돌아와,<br>보고 싶어»</p>
+            <div class="postal-firma">— 마음을 담아 💕</div>
+          </div>
+        </article>
+
+        <!-- ⑧ العربية ────────────────────────────────── -->
+        <article class="postal" style="--rot:-2deg"
+                 data-animada role="listitem" lang="ar">
+          <div class="postal-foto">
+            <span class="postal-emoji" aria-hidden="true">🌙</span>
+          </div>
+          <div class="postal-cuerpo">
+            <div class="postal-encabezado">
+              <span class="postal-idioma">العربية</span>
+              <span class="postal-sello" aria-label="luna">🌙</span>
+            </div>
+            <!-- dir="rtl" sólo en los elementos de texto árabe -->
+            <p class="postal-frase" dir="rtl">«عودي قريباً،<br>نفتقدك كثيراً»</p>
+            <div class="postal-firma" dir="rtl">— بكل المحبة 💛</div>
+          </div>
+        </article>
+
+      </div><!-- .grid-postales -->
+    </div><!-- .contenedor -->
+  </section>
+
+  <!-- ════════════════════════════════════ UNET ══════ -->
+  <!--
+    SECCIÓN UNET — CÓMO PERSONALIZAR:
+    · Cambia los textos dentro de las etiquetas <h3> y <p class="timeline-texto">
+    · No muevas los atributos class, role ni data-tl
+    · La fecha del contador se cambia en script.js (busca FECHA_PARTIDA)
+  -->
+  <section class="seccion seccion--unet" id="unet"
+           aria-label="Nuestros días en la UNET">
+    <div class="contenedor">
+
+      <!-- ── Contador de días ── -->
+      <div class="contador-card" id="contador-card">
+        <p class="contador-label-sup">llevamos</p>
+        <span class="contador-num" id="contador-dias"
+              aria-live="polite" aria-label="Contador de días">…</span>
+        <p class="contador-label-inf">días desde que te fuiste</p>
+        <p class="contador-fecha-desde" id="contador-fecha-texto"></p>
+      </div>
+
+      <!-- ── Cabecera ── -->
+      <header class="seccion-cabecera texto-centro">
+        <h2 class="unet-h2">Nuestros días en la UNET</h2>
+        <p class="seccion-subtitulo unet-subtitulo">
+          momentos que no se olvidan
+        </p>
+        <hr class="divisor divisor--ancho">
+      </header>
+
+      <!-- ── Timeline de momentos ── -->
+      <div class="timeline" role="list"
+           aria-label="Momentos compartidos en la UNET">
+
+        <!-- ① 🎓 Estudio ─────────────────────────────────── -->
+        <article class="timeline-item" role="listitem"
+                 data-tl style="--card-rot:-0.8deg">
+          <div class="timeline-nodo" role="img" aria-label="Estudio">🎓</div>
+          <div class="timeline-conector" aria-hidden="true"></div>
+          <div class="timeline-tarjeta">
+            <!-- ✏️ Edita el título -->
+            <h3 class="timeline-titulo">Los primeros días</h3>
+            <!-- ✏️ Edita el texto de este momento -->
+            <p class="timeline-texto">
+              Cuando recién nos conocimos y empezamos a planear juntos el evento de la Hello World Cup. Ahí supe que íbamos a hacer grandes cosas.
+            </p>
+          </div>
+        </article>
+
+        <!-- ② 🌙 Edición ─────────────────────────────────── -->
+        <article class="timeline-item" role="listitem"
+                 data-tl style="--card-rot:0.6deg">
+          <div class="timeline-nodo" role="img" aria-label="Edición">🌙</div>
+          <div class="timeline-conector" aria-hidden="true"></div>
+          <div class="timeline-tarjeta">
+            <!-- ✏️ Edita el título -->
+            <h3 class="timeline-titulo">Noches de edición</h3>
+            <!-- ✏️ Edita el texto de este momento -->
+            <p class="timeline-texto">
+              Debatiendo hasta tarde sobre mejoras para el evento, la sede, y de paso los consejos de vida que solo da el cansancio de las 2am.
+            </p>
+          </div>
+        </article>
+
+        <!-- ③ ☕ Cafetería ───────────────────────────────── -->
+        <article class="timeline-item" role="listitem"
+                 data-tl style="--card-rot:-0.5deg">
+          <div class="timeline-nodo" role="img" aria-label="Cafetería">☕</div>
+          <div class="timeline-conector" aria-hidden="true"></div>
+          <div class="timeline-tarjeta">
+            <!-- ✏️ Edita el título -->
+            <h3 class="timeline-titulo">La cafetería sagrada</h3>
+            <!-- ✏️ Edita el texto de este momento -->
+            <p class="timeline-texto">
+              Donde resolvimos el mundo entre teques y malta. El lugar de los planes imposibles que a veces se cumplían.
+            </p>
+          </div>
+        </article>
+
+        <!-- ④ 🗺️ Planes ─────────────────────────────────── -->
+        <article class="timeline-item" role="listitem"
+                 data-tl style="--card-rot:0.9deg">
+          <div class="timeline-nodo" role="img" aria-label="Planes">🗺️</div>
+          <div class="timeline-conector" aria-hidden="true"></div>
+          <div class="timeline-tarjeta">
+            <!-- ✏️ Edita el título -->
+            <h3 class="timeline-titulo">Planes por montones</h3>
+            <!-- ✏️ Edita el texto de este momento -->
+            <p class="timeline-texto">
+              Aún nos quedan muchos proyectos, conversaciones y aventuras pendientes. La distancia no cancela nada, solo lo pausa.
+            </p>
+          </div>
+        </article>
+
+        <!-- ⑤ ❤️ Amistad ───────────────────────────────── -->
+        <article class="timeline-item" role="listitem"
+                 data-tl style="--card-rot:-0.7deg">
+          <div class="timeline-nodo" role="img" aria-label="Amistad">❤️</div>
+          <div class="timeline-conector" aria-hidden="true"></div>
+          <div class="timeline-tarjeta">
+            <!-- ✏️ Edita el título -->
+            <h3 class="timeline-titulo">Amistad de verdad</h3>
+            <!-- ✏️ Edita el texto de este momento -->
+            <p class="timeline-texto">
+              La UNET nos dio muchas cosas, pero lo mejor fue encontrarnos. Eso no tiene límite de distancia.
+            </p>
+          </div>
+        </article>
+
+      </div><!-- .timeline -->
+    </div><!-- .contenedor -->
+  </section>
+
+
+  <!-- ══════════════════════════════════════ GALERÍA ══════ -->
+  <section class="seccion seccion--galeria" id="galeria"
+           aria-label="Galería de recuerdos">
+    <div class="contenedor contenedor--ancho">
+
+      <header class="seccion-cabecera texto-centro">
+        <span class="etiqueta">21 fotos · mil recuerdos</span>
+        <h2>Momentos para llevar</h2>
+        <p class="seccion-subtitulo">
+          toca una foto para verla de cerca ✦
+        </p>
+        <hr class="divisor divisor--ancho">
+      </header>
+
+      <!--
+        Las fotos se generan por JavaScript desde fotos/foto1.jpg … foto21.jpg.
+        Si una imagen no existe se muestra un placeholder con ícono de cámara.
+        Los captions son editables y se guardan en localStorage.
+      -->
+      <div class="galeria-grid" id="galeria-grid"
+           role="list" aria-label="Galería de fotos"></div>
+
+    </div>
+  </section>
+
+  <!--
+    ══════════════════════════════════════════════════════════
+    REPRODUCTOR MINIMALISTA
+    Carga musica.mp3 desde la carpeta raíz.
+    Si el archivo no existe, el reproductor se desactiva visualmente.
+    ══════════════════════════════════════════════════════════
+  -->
+  <div class="reproductor" id="reproductor"
+       role="region" aria-label="Reproductor de música">
+    <button class="rep-btn" id="rep-btn" type="button"
+            aria-label="Reproducir música">
+      <!-- Ícono Play -->
+      <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor"
+           xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+      <!-- Ícono Pause (oculto por defecto, JS lo muestra) -->
+      <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor"
+           xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+           style="display:none">
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+      </svg>
+    </button>
+    <!-- Barras animadas de ola de audio -->
+    <div class="rep-ola" aria-hidden="true">
+      <span class="rep-barra"></span>
+      <span class="rep-barra"></span>
+      <span class="rep-barra"></span>
+      <span class="rep-barra"></span>
+      <span class="rep-barra"></span>
+    </div>
+    <span class="rep-nota" aria-hidden="true">🎵</span>
+  </div>
+
+  <!--
+    ══════════════════════════════════════════════════════════
+    BOTÓN FLOTANTE "ENVIAR AMOR"
+    Al presionar lanza corazones y confeti por 3 segundos.
+    ══════════════════════════════════════════════════════════
+  -->
+  <button class="btn-amor" id="btn-amor" type="button"
+          aria-label="Lanzar animación de corazones y confeti">
+    <span aria-hidden="true">💌</span>
+    <span class="btn-amor-txt">Enviar amor</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

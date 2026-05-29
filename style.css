@@ -1,0 +1,2305 @@
+/* ============================================================
+   IMPORTS — Google Fonts
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700;800&display=swap');
+
+
+/* ============================================================
+   VARIABLES CSS
+   ============================================================ */
+:root {
+  /* --- Paleta principal --- */
+  --naranja:        #E8621A;
+  --coral:          #F28B70;
+  --dorado:         #F5C842;
+  --noche:          #1A1A3E;
+  --crema:          #FFF8F0;
+
+  /* --- Derivadas --- */
+  --naranja-claro:  #F07840;
+  --naranja-oscuro: #C44E10;
+  --coral-claro:    #F8B09A;
+  --coral-oscuro:   #E06040;
+  --dorado-claro:   #FAD96A;
+  --dorado-oscuro:  #D4A830;
+  --noche-claro:    #2D2D5E;
+  --noche-medio:    #241B55;
+  --noche-profundo: #0D0D1F;
+  --crema-oscuro:   #F0E0C8;
+
+  /* --- Tipografía --- */
+  --font-titulo: 'Playfair Display', Georgia, serif;
+  --font-cuerpo: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* --- Escala tipográfica --- */
+  --fs-xs:   0.75rem;
+  --fs-sm:   0.875rem;
+  --fs-base: 1rem;
+  --fs-lg:   1.125rem;
+  --fs-xl:   1.25rem;
+  --fs-2xl:  1.5rem;
+  --fs-3xl:  1.875rem;
+  --fs-4xl:  2.25rem;
+  --fs-5xl:  3rem;
+  --fs-6xl:  3.75rem;
+
+  /* --- Pesos --- */
+  --fw-light:    300;
+  --fw-regular:  400;
+  --fw-semi:     600;
+  --fw-bold:     700;
+  --fw-extrabold:800;
+
+  /* --- Interlineado --- */
+  --lh-tight:   1.2;
+  --lh-snug:    1.375;
+  --lh-base:    1.6;
+  --lh-relaxed: 1.75;
+
+  /* --- Espaciado --- */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+
+  /* --- Bordes --- */
+  --radio-sm:   0.25rem;
+  --radio-md:   0.5rem;
+  --radio-lg:   1rem;
+  --radio-xl:   1.5rem;
+  --radio-2xl:  2rem;
+  --radio-full: 9999px;
+
+  /* --- Sombras --- */
+  --sombra-sm: 0 1px 3px rgba(26,26,62,0.18);
+  --sombra-md: 0 4px 14px rgba(26,26,62,0.22);
+  --sombra-lg: 0 8px 28px rgba(26,26,62,0.28);
+  --sombra-xl: 0 16px 52px rgba(26,26,62,0.34);
+  --brillo-naranja: 0 0 22px rgba(232,98,26,0.55), 0 0 44px rgba(232,98,26,0.28);
+  --brillo-dorado:  0 0 22px rgba(245,200,66,0.65), 0 0 44px rgba(245,200,66,0.32);
+  --brillo-coral:   0 0 22px rgba(242,139,112,0.55), 0 0 44px rgba(242,139,112,0.28);
+
+  /* --- Easings --- */
+  --ease-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-suave:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-rebote: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --- Transiciones --- */
+  --trans-rapida:  150ms var(--ease-suave);
+  --trans-base:    300ms var(--ease-suave);
+  --trans-lenta:   600ms var(--ease-expo);
+  --trans-xlenta: 1000ms var(--ease-expo);
+
+  /* --- Z-index --- */
+  --z-fondo:   -2;
+  --z-estrellas: -1;
+  --z-base:      0;
+  --z-elevado:   10;
+  --z-overlay:   100;
+  --z-modal:    1000;
+
+  /* --- Gradientes --- */
+  --grad-atardecer: linear-gradient(
+    180deg,
+    var(--noche-profundo) 0%,
+    var(--noche)          12%,
+    var(--noche-medio)    26%,
+    #4A2060               40%,
+    #8B2252               52%,
+    #C03828               62%,
+    var(--naranja)        72%,
+    var(--coral)          83%,
+    #F0B060               92%,
+    var(--dorado)        100%
+  );
+  --grad-calido:    linear-gradient(135deg, var(--naranja), var(--dorado));
+  --grad-coral:     linear-gradient(135deg, var(--coral), var(--naranja));
+  --grad-suave:     linear-gradient(135deg, var(--coral-claro), var(--dorado-claro));
+  --grad-cristal:   linear-gradient(135deg, rgba(255,248,240,0.18), rgba(255,248,240,0.06));
+
+  /* --- Config animaciones (sobreescribibles por clases) --- */
+  --anim-dur:   0.8s;
+  --anim-delay: 0s;
+}
+
+
+/* ============================================================
+   RESET MODERNO
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;     /* evita scroll horizontal en cualquier navegador */
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  font-family: var(--font-cuerpo);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-base);
+  color: var(--crema);
+  background: var(--grad-atardecer);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video, picture {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+ul, ol { list-style: none; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+
+/* ============================================================
+   FONDO — ESTRELLAS ANIMADAS (CSS PURO)
+
+   Técnica: dos pseudo-elementos de 1-2 px posicionados fixed;
+   box-shadow proyecta cada estrella desde ese punto de origen.
+   Las coordenadas Y se mantienen en los primeros ~300 px donde
+   el cielo es suficientemente oscuro para verlas.
+   ============================================================ */
+
+/* Capa 1 — estrellas diminutas (1 px) */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: transparent;
+  pointer-events: none;
+  z-index: var(--z-estrellas);
+  animation: titilar 4.5s ease-in-out infinite alternate;
+  box-shadow:
+    /* fila alta — y: 4 – 72 px */
+    23px 18px rgba(255,248,240,.80),   95px  8px rgba(255,248,240,.60),
+   167px 35px rgba(255,248,240,.90),  239px 15px rgba(255,248,240,.70),
+   311px 48px rgba(255,248,240,.80),  383px 22px rgba(255,248,240,.60),
+   455px 12px rgba(255,248,240,.90),  527px 38px rgba(255,248,240,.70),
+   599px 58px rgba(255,248,240,.80),  671px 25px rgba(255,248,240,.60),
+   743px 42px rgba(255,248,240,.90),  815px  9px rgba(255,248,240,.70),
+   887px 55px rgba(255,248,240,.80),  959px 28px rgba(255,248,240,.60),
+  1031px 45px rgba(255,248,240,.90), 1103px 16px rgba(255,248,240,.70),
+  1175px 62px rgba(255,248,240,.80), 1247px 32px rgba(255,248,240,.60),
+  1319px 52px rgba(255,248,240,.90), 1391px 19px rgba(255,248,240,.70),
+  1463px 38px rgba(255,248,240,.80), 1535px 68px rgba(255,248,240,.60),
+  1607px 28px rgba(255,248,240,.90), 1679px 48px rgba(255,248,240,.70),
+  1751px 15px rgba(255,248,240,.80), 1823px 42px rgba(255,248,240,.60),
+  1895px 25px rgba(255,248,240,.90),
+    /* fila media — y: 82 – 195 px */
+    58px  92px rgba(255,248,240,.70), 130px 118px rgba(255,248,240,.50),
+   202px  85px rgba(255,248,240,.80), 274px 135px rgba(255,248,240,.60),
+   346px 108px rgba(255,248,240,.90), 418px 162px rgba(255,248,240,.50),
+   490px  95px rgba(255,248,240,.70), 562px 142px rgba(255,248,240,.80),
+   634px 115px rgba(255,248,240,.60), 706px 178px rgba(255,248,240,.50),
+   778px  98px rgba(255,248,240,.90), 850px 155px rgba(255,248,240,.70),
+   922px 125px rgba(255,248,240,.80), 994px 185px rgba(255,248,240,.50),
+  1066px 108px rgba(255,248,240,.60),1138px 162px rgba(255,248,240,.90),
+  1210px  88px rgba(255,248,240,.70),1282px 142px rgba(255,248,240,.50),
+  1354px 118px rgba(255,248,240,.80),1426px 175px rgba(255,248,240,.60),
+  1498px  95px rgba(255,248,240,.90),1570px 155px rgba(255,248,240,.50),
+  1642px 125px rgba(255,248,240,.70),1714px 178px rgba(255,248,240,.80),
+  1786px 102px rgba(255,248,240,.60),1858px 148px rgba(255,248,240,.90),
+    /* fila baja — y: 210 – 305 px (más tenues, cielo más claro) */
+    75px 222px rgba(255,248,240,.40), 182px 255px rgba(255,248,240,.30),
+   289px 235px rgba(255,248,240,.50), 396px 268px rgba(255,248,240,.40),
+   503px 218px rgba(255,248,240,.30), 610px 285px rgba(255,248,240,.50),
+   717px 242px rgba(255,248,240,.40), 824px 212px rgba(255,248,240,.30),
+   931px 275px rgba(255,248,240,.50),1038px 232px rgba(255,248,240,.40),
+  1145px 258px rgba(255,248,240,.30),1252px 295px rgba(255,248,240,.50),
+  1359px 225px rgba(255,248,240,.40),1466px 265px rgba(255,248,240,.30),
+  1573px 245px rgba(255,248,240,.50),1680px 282px rgba(255,248,240,.40),
+  1787px 235px rgba(255,248,240,.30),1894px 258px rgba(255,248,240,.50);
+}
+
+/* Capa 2 — estrellas medianas (2 px), más brillantes, fase distinta */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: transparent;
+  pointer-events: none;
+  z-index: var(--z-estrellas);
+  animation: titilar-alt 7s ease-in-out infinite alternate;
+  box-shadow:
+    /* fila alta */
+    45px  28px rgba(255,248,240,.90), 156px  12px rgba(255,248,240,1.0),
+   267px  42px rgba(255,248,240,.80), 378px  25px rgba(255,248,240,.90),
+   489px  55px rgba(255,248,240,.70), 600px  18px rgba(255,248,240,.90),
+   711px  38px rgba(255,248,240,1.0), 822px  28px rgba(255,248,240,.80),
+   933px  52px rgba(255,248,240,.90),1044px  15px rgba(255,248,240,.70),
+  1155px  45px rgba(255,248,240,.90),1266px  32px rgba(255,248,240,1.0),
+  1377px  58px rgba(255,248,240,.80),1488px  22px rgba(255,248,240,.90),
+  1599px  48px rgba(255,248,240,.70),1710px  35px rgba(255,248,240,.90),
+  1821px  18px rgba(255,248,240,1.0),
+    /* fila media */
+    78px 105px rgba(255,248,240,.80), 189px 128px rgba(255,248,240,.90),
+   300px  95px rgba(255,248,240,.70), 411px 148px rgba(255,248,240,.80),
+   522px 112px rgba(255,248,240,.90), 633px 168px rgba(255,248,240,.70),
+   744px  88px rgba(255,248,240,.80), 855px 138px rgba(255,248,240,.90),
+   966px 118px rgba(255,248,240,.70),1077px 158px rgba(255,248,240,.80),
+  1188px  98px rgba(255,248,240,.90),1299px 145px rgba(255,248,240,.70),
+  1410px 122px rgba(255,248,240,.80),1521px 168px rgba(255,248,240,.90),
+  1632px 105px rgba(255,248,240,.70),1743px 142px rgba(255,248,240,.80),
+  1854px 118px rgba(255,248,240,.90);
+}
+
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+
+/* Parpadeo de estrellas — capa 1 */
+@keyframes titilar {
+  0%   { opacity: 1;    transform: scale(1);   }
+  40%  { opacity: 0.25; transform: scale(0.75); }
+  100% { opacity: 0.85; transform: scale(0.95); }
+}
+
+/* Parpadeo de estrellas — capa 2 (fase desplazada) */
+@keyframes titilar-alt {
+  0%   { opacity: 0.5;  transform: scale(0.85); }
+  55%  { opacity: 1;    transform: scale(1.1);  }
+  100% { opacity: 0.65; transform: scale(0.9);  }
+}
+
+/* Entrada suave con desplazamiento */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Flotación perpetua */
+@keyframes float {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-14px); }
+}
+
+/* Flotación orgánica con leve rotación */
+@keyframes floatSoft {
+  0%   { transform: translateY(0)    rotate(0deg);  }
+  33%  { transform: translateY(-9px) rotate(1.2deg); }
+  66%  { transform: translateY(-4px) rotate(-0.8deg);}
+  100% { transform: translateY(0)    rotate(0deg);  }
+}
+
+/* Deslizamiento desde abajo */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(44px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Deslizamiento desde izquierda */
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-44px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+/* Deslizamiento desde derecha */
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(44px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+/* Pulso brillante (útil en botones o iconos destacados) */
+@keyframes brilloPulso {
+  0%, 100% { box-shadow: 0 0 12px rgba(245,200,66,.40), 0 0 24px rgba(245,200,66,.20); }
+  50%       { box-shadow: 0 0 28px rgba(245,200,66,.85), 0 0 56px rgba(245,200,66,.45), 0 0 80px rgba(245,200,66,.20); }
+}
+
+/* Pulso de escala suave */
+@keyframes pulseSoft {
+  0%, 100% { transform: scale(1);    }
+  50%       { transform: scale(1.06); }
+}
+
+/* Shimmer de texto dorado */
+@keyframes shimmerTexto {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* Latido de corazón */
+@keyframes latido {
+  0%, 70%, 100% { transform: scale(1);    }
+  14%            { transform: scale(1.22); }
+  28%            { transform: scale(1.05); }
+  42%            { transform: scale(1.18); }
+}
+
+/* Rotación lenta (decorativos) */
+@keyframes girar {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+/* Parpadeo suave (cursor, detalles) */
+@keyframes parpadeo {
+  0%, 100% { opacity: 1;  }
+  50%       { opacity: 0.1; }
+}
+
+
+/* ============================================================
+   CLASES UTILITARIAS DE ANIMACIÓN
+
+   Uso combinado:  class="fade-in delay-300 dur-1000"
+   Las clases .delay-* y .dur-* sobreescriben las variables
+   CSS --anim-delay y --anim-dur que consumen las animaciones.
+   fill-mode "both" asegura que el elemento esté invisible
+   durante el delay (no aparece y desaparece bruscamente).
+   ============================================================ */
+
+/* — Entrada (se reproducen una vez) — */
+.fade-in {
+  animation: fadeIn var(--anim-dur, .8s) var(--ease-expo) var(--anim-delay, 0s) both;
+}
+.slide-up {
+  animation: slideUp var(--anim-dur, .8s) var(--ease-expo) var(--anim-delay, 0s) both;
+}
+.slide-left {
+  animation: slideLeft var(--anim-dur, .8s) var(--ease-expo) var(--anim-delay, 0s) both;
+}
+.slide-right {
+  animation: slideRight var(--anim-dur, .8s) var(--ease-expo) var(--anim-delay, 0s) both;
+}
+
+/* — Continuas — */
+.float       { animation: float      var(--anim-dur, 3s) ease-in-out var(--anim-delay, 0s) infinite; }
+.float-soft  { animation: floatSoft  var(--anim-dur, 4s) ease-in-out var(--anim-delay, 0s) infinite; }
+.pulse-glow  { animation: brilloPulso var(--anim-dur, 2s) ease-in-out var(--anim-delay, 0s) infinite; }
+.pulse-soft  { animation: pulseSoft  var(--anim-dur, 2s) ease-in-out var(--anim-delay, 0s) infinite; }
+.latido      { animation: latido     var(--anim-dur, 1.5s) ease-in-out var(--anim-delay, 0s) infinite; }
+.girar-lento { animation: girar      var(--anim-dur, 12s) linear       var(--anim-delay, 0s) infinite; }
+
+/* — Delays (fijan --anim-delay) — */
+.delay-100  { --anim-delay: 0.1s;  }
+.delay-200  { --anim-delay: 0.2s;  }
+.delay-300  { --anim-delay: 0.3s;  }
+.delay-400  { --anim-delay: 0.4s;  }
+.delay-500  { --anim-delay: 0.5s;  }
+.delay-600  { --anim-delay: 0.6s;  }
+.delay-700  { --anim-delay: 0.7s;  }
+.delay-800  { --anim-delay: 0.8s;  }
+.delay-1000 { --anim-delay: 1s;    }
+.delay-1200 { --anim-delay: 1.2s;  }
+.delay-1500 { --anim-delay: 1.5s;  }
+.delay-2000 { --anim-delay: 2s;    }
+.delay-2500 { --anim-delay: 2.5s;  }
+.delay-3000 { --anim-delay: 3s;    }
+
+/* — Duraciones (fijan --anim-dur) — */
+.dur-300  { --anim-dur: 0.3s; }
+.dur-500  { --anim-dur: 0.5s; }
+.dur-700  { --anim-dur: 0.7s; }
+.dur-1000 { --anim-dur: 1s;   }
+.dur-1500 { --anim-dur: 1.5s; }
+.dur-2000 { --anim-dur: 2s;   }
+.dur-3000 { --anim-dur: 3s;   }
+.dur-4000 { --anim-dur: 4s;   }
+.dur-5000 { --anim-dur: 5s;   }
+
+/* Respeto por preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .slide-up, .slide-left, .slide-right,
+  .float, .float-soft, .pulse-glow, .pulse-soft,
+  .latido, .girar-lento {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  body::before, body::after {
+    animation: none;
+  }
+}
+
+
+/* ============================================================
+   TIPOGRAFÍA
+   ============================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-titulo);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--crema);
+}
+
+/* Fluid con clamp: escala entre mobile y desktop */
+h1 { font-size: clamp(var(--fs-3xl), 9vw,  var(--fs-5xl)); letter-spacing: -0.025em; }
+h2 { font-size: clamp(var(--fs-2xl), 6.5vw,var(--fs-4xl)); letter-spacing: -0.018em; }
+h3 { font-size: clamp(var(--fs-xl),  4.5vw,var(--fs-3xl)); }
+h4 { font-size: clamp(var(--fs-lg),  3.5vw,var(--fs-2xl)); }
+h5 { font-size: var(--fs-lg);  }
+h6 { font-size: var(--fs-base); }
+
+p {
+  font-family: var(--font-cuerpo);
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+  color: var(--crema);
+}
+
+/* Variantes tipográficas */
+.texto-grande  { font-size: var(--fs-lg);  line-height: var(--lh-relaxed); }
+.texto-pequeño { font-size: var(--fs-sm);  }
+.texto-xs      { font-size: var(--fs-xs);  }
+.cursiva       { font-style: italic;        }
+.espaciado     { letter-spacing: 0.12em;    }
+.mayusculas    { text-transform: uppercase; }
+.negrita       { font-weight: var(--fw-bold); }
+.ligero        { font-weight: var(--fw-light); }
+
+/* Texto con shimmer dorado */
+.titulo-brillante {
+  font-family: var(--font-titulo);
+  background: linear-gradient(
+    90deg,
+    var(--dorado) 0%,
+    var(--coral-claro) 30%,
+    var(--dorado) 50%,
+    var(--naranja-claro) 70%,
+    var(--dorado) 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerTexto 5s linear infinite;
+}
+
+/* Cita decorativa */
+.cita {
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-size: clamp(var(--fs-xl), 4vw, var(--fs-3xl));
+  line-height: var(--lh-snug);
+  color: var(--crema);
+  border-left: 3px solid var(--dorado);
+  padding-left: var(--sp-6);
+  opacity: 0.92;
+}
+
+
+/* ============================================================
+   LAYOUT — MOBILE-FIRST
+   ============================================================ */
+
+.contenedor {
+  width: 100%;
+  padding-inline: var(--sp-4);
+  margin-inline: auto;
+}
+
+.seccion {
+  position: relative;
+  padding-block: var(--sp-12);
+}
+
+.seccion--alta {
+  padding-block: var(--sp-16);
+}
+
+/* Grid de contenido centrado */
+.contenido-centrado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-6);
+}
+
+
+/* ============================================================
+   CLASES UTILITARIAS GENERALES
+   ============================================================ */
+
+/* Colores de texto */
+.t-naranja { color: var(--naranja);  }
+.t-coral   { color: var(--coral);    }
+.t-dorado  { color: var(--dorado);   }
+.t-noche   { color: var(--noche);    }
+.t-crema   { color: var(--crema);    }
+
+/* Fondos */
+.bg-naranja  { background-color: var(--naranja); }
+.bg-coral    { background-color: var(--coral);   }
+.bg-dorado   { background-color: var(--dorado);  }
+.bg-noche    { background-color: var(--noche);   }
+.bg-crema    { background-color: var(--crema);   }
+.bg-calido   { background: var(--grad-calido);   }
+.bg-cristal  {
+  background: var(--grad-cristal);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Texto */
+.text-center  { text-align: center;  }
+.text-left    { text-align: left;    }
+.text-right   { text-align: right;   }
+
+/* Display */
+.flex        { display: flex;        }
+.flex-col    { flex-direction: column; }
+.grid        { display: grid;        }
+.hidden      { display: none;        }
+.block       { display: block;       }
+
+/* Flexbox */
+.items-center    { align-items: center;       }
+.items-start     { align-items: flex-start;   }
+.items-end       { align-items: flex-end;     }
+.justify-center  { justify-content: center;   }
+.justify-between { justify-content: space-between; }
+.flex-wrap       { flex-wrap: wrap;           }
+.gap-2  { gap: var(--sp-2); }
+.gap-4  { gap: var(--sp-4); }
+.gap-6  { gap: var(--sp-6); }
+.gap-8  { gap: var(--sp-8); }
+
+/* Espaciado — padding */
+.p-2   { padding: var(--sp-2);         }
+.p-4   { padding: var(--sp-4);         }
+.p-6   { padding: var(--sp-6);         }
+.p-8   { padding: var(--sp-8);         }
+.px-4  { padding-inline: var(--sp-4);  }
+.px-6  { padding-inline: var(--sp-6);  }
+.py-4  { padding-block:  var(--sp-4);  }
+.py-6  { padding-block:  var(--sp-6);  }
+.py-8  { padding-block:  var(--sp-8);  }
+.py-12 { padding-block:  var(--sp-12); }
+
+/* Espaciado — margin */
+.mt-4   { margin-top:    var(--sp-4);  }
+.mt-6   { margin-top:    var(--sp-6);  }
+.mt-8   { margin-top:    var(--sp-8);  }
+.mb-4   { margin-bottom: var(--sp-4);  }
+.mb-6   { margin-bottom: var(--sp-6);  }
+.mb-8   { margin-bottom: var(--sp-8);  }
+.mx-auto{ margin-inline: auto;         }
+
+/* Bordes */
+.r-sm   { border-radius: var(--radio-sm);   }
+.r-md   { border-radius: var(--radio-md);   }
+.r-lg   { border-radius: var(--radio-lg);   }
+.r-xl   { border-radius: var(--radio-xl);   }
+.r-2xl  { border-radius: var(--radio-2xl);  }
+.r-full { border-radius: var(--radio-full); }
+
+/* Sombras */
+.s-sm  { box-shadow: var(--sombra-sm); }
+.s-md  { box-shadow: var(--sombra-md); }
+.s-lg  { box-shadow: var(--sombra-lg); }
+.s-xl  { box-shadow: var(--sombra-xl); }
+.glow-naranja { box-shadow: var(--brillo-naranja); }
+.glow-dorado  { box-shadow: var(--brillo-dorado);  }
+.glow-coral   { box-shadow: var(--brillo-coral);   }
+
+/* Misc */
+.w-full         { width: 100%;        }
+.h-full         { height: 100%;       }
+.relative       { position: relative; }
+.absolute       { position: absolute; }
+.overflow-hidden{ overflow: hidden;   }
+
+
+/* ============================================================
+   COMPONENTES BASE
+   ============================================================ */
+
+/* --- Tarjeta (glassmorphism) --- */
+.tarjeta {
+  background: rgba(255,248,240,0.08);
+  border: 1px solid rgba(255,248,240,0.16);
+  border-radius: var(--radio-xl);
+  padding: var(--sp-6);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--sombra-lg);
+  transition: transform var(--trans-base), box-shadow var(--trans-base);
+}
+.tarjeta:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-xl);
+}
+
+.tarjeta--dorada {
+  background: rgba(245,200,66,0.10);
+  border-color: rgba(245,200,66,0.28);
+}
+.tarjeta--coral {
+  background: rgba(242,139,112,0.10);
+  border-color: rgba(242,139,112,0.28);
+}
+.tarjeta--oscura {
+  background: rgba(26,26,62,0.45);
+  border-color: rgba(255,248,240,0.12);
+}
+
+/* --- Botones --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-6);
+  border-radius: var(--radio-full);
+  font-family: var(--font-cuerpo);
+  font-weight: var(--fw-semi);
+  font-size: var(--fs-base);
+  line-height: 1;
+  cursor: pointer;
+  border: none;
+  transition:
+    transform var(--trans-base),
+    box-shadow var(--trans-base),
+    background var(--trans-base);
+  user-select: none;
+  text-decoration: none;
+}
+.btn:active { transform: scale(0.96); }
+
+.btn--principal {
+  background: var(--grad-calido);
+  color: var(--noche);
+  box-shadow: var(--sombra-md);
+}
+.btn--principal:hover {
+  box-shadow: var(--brillo-naranja);
+  transform: translateY(-2px);
+}
+
+.btn--secundario {
+  background: transparent;
+  color: var(--crema);
+  border: 2px solid rgba(255,248,240,0.40);
+}
+.btn--secundario:hover {
+  border-color: var(--dorado);
+  color: var(--dorado);
+  transform: translateY(-2px);
+}
+
+.btn--fantasma {
+  background: rgba(255,248,240,0.10);
+  color: var(--crema);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.btn--fantasma:hover {
+  background: rgba(255,248,240,0.20);
+  transform: translateY(-2px);
+}
+
+/* --- Divisor decorativo --- */
+.divisor {
+  width: 60px;
+  height: 3px;
+  border: none;
+  border-radius: var(--radio-full);
+  background: var(--grad-calido);
+  margin: var(--sp-4) auto;
+}
+.divisor--ancho  { width: 120px; }
+.divisor--coral  { background: var(--grad-coral); }
+
+/* --- Separador de estrellas --- */
+.sep::before {
+  content: '✦ ✧ ✦';
+  display: block;
+  text-align: center;
+  color: var(--dorado);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.55em;
+  opacity: 0.70;
+  padding-block: var(--sp-4);
+}
+
+/* --- Etiqueta / chip --- */
+.etiqueta {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--radio-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(245,200,66,0.18);
+  color: var(--dorado);
+  border: 1px solid rgba(245,200,66,0.32);
+}
+.etiqueta--coral {
+  background: rgba(242,139,112,0.18);
+  color: var(--coral-claro);
+  border-color: rgba(242,139,112,0.32);
+}
+
+/* --- Avatar / foto circular --- */
+.avatar {
+  border-radius: var(--radio-full);
+  object-fit: cover;
+  border: 3px solid rgba(245,200,66,0.55);
+  box-shadow: var(--brillo-dorado);
+}
+
+/* --- Overlay semitransparente --- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26,26,62,0.0) 0%,
+    rgba(26,26,62,0.6) 100%
+  );
+  border-radius: inherit;
+}
+
+
+/* ============================================================
+   BREAKPOINT — TABLET  (≥ 768 px)
+   ============================================================ */
+@media (min-width: 768px) {
+  :root {
+    --fs-base: 1.0625rem;
+  }
+
+  .contenedor {
+    padding-inline: var(--sp-8);
+    max-width: 728px;
+  }
+
+  .seccion        { padding-block: var(--sp-16); }
+  .seccion--alta  { padding-block: var(--sp-20); }
+
+  h1 { font-size: var(--fs-5xl); }
+  h2 { font-size: var(--fs-4xl); }
+  h3 { font-size: var(--fs-3xl); }
+
+  .tarjeta     { padding: var(--sp-8); }
+  .divisor     { width: 80px;  }
+  .divisor--ancho { width: 160px; }
+
+  /* Grids responsive */
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
+
+  /* Visibilidad por breakpoint */
+  .solo-movil { display: none; }
+  .solo-tablet { display: block; }
+}
+
+
+/* ============================================================
+   BREAKPOINT — ESCRITORIO  (≥ 1024 px)
+   ============================================================ */
+@media (min-width: 1024px) {
+  :root {
+    --fs-base: 1.125rem;
+  }
+
+  .contenedor {
+    padding-inline: var(--sp-10);
+    max-width: 980px;
+  }
+  .contenedor--ancho { max-width: 1200px; }
+
+  .seccion        { padding-block: var(--sp-20); }
+  .seccion--alta  { padding-block: var(--sp-24); }
+
+  h1 { font-size: var(--fs-6xl); }
+
+  /* Grids responsive */
+  .grid-3   { display: grid; grid-template-columns: repeat(3, 1fr);  gap: var(--sp-8); }
+  .grid-2-1 { display: grid; grid-template-columns: 2fr 1fr;         gap: var(--sp-8); }
+  .grid-1-2 { display: grid; grid-template-columns: 1fr 2fr;         gap: var(--sp-8); }
+
+  /* Visibilidad por breakpoint */
+  .solo-movil  { display: none;  }
+  .solo-desktop{ display: block; }
+}
+
+
+/* ============================================================
+   AVIÓN — Animación y partículas
+   ============================================================ */
+
+/* Capa de composición que no bloquea el scroll ni los clics
+   del resto de la página (pointer-events: none en el escenario,
+   se reactiva sólo en el wrapper del avión) */
+.avion-escena {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  overflow: hidden;
+}
+
+/* Wrapper que contiene el SVG y recibe los eventos de puntero */
+.avion-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: all;
+  cursor: pointer;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.avion-wrapper svg {
+  display: block;
+  width: 110px;       /* escala base desktop; JS aplica scale() para mobile */
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(26,26,62,0.50));
+  transition: filter 200ms ease;
+}
+
+/* Retroalimentación visual al hacer hover / tap */
+.avion-wrapper:hover svg,
+.avion-wrapper.avion--activo svg {
+  filter: drop-shadow(0 0 14px rgba(245,200,66,0.95))
+          drop-shadow(0 4px 12px rgba(26,26,62,0.50));
+}
+
+/* ── Puntos / nubecitas de estela ─────────────────────────── */
+.avion-estela {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(255, 248, 240, 0.78);
+  pointer-events: none;
+  /* translate(-50%,-50%) centra el punto en la coordenada spawneada */
+  transform: translate(-50%, -50%) scale(1);
+  animation: estelaVida 2.2s ease-out forwards;
+}
+
+@keyframes estelaVida {
+  0%   { transform: translate(-50%, -50%) scale(1);    opacity: 0.78; }
+  18%  { transform: translate(-50%, -54%) scale(1.8);  opacity: 0.55; }
+  55%  { transform: translate(-50%, -60%) scale(3.0);  opacity: 0.24; }
+  100% { transform: translate(-50%, -68%) scale(4.5);  opacity: 0;    }
+}
+
+/* ── Corazones / estrellas al hacer clic ─────────────────── */
+.avion-particula {
+  position: fixed;
+  pointer-events: none;
+  line-height: 1;
+  font-style: normal;
+  transform-origin: center center;
+  /* Las variables --px-mid/fin, --py-fin, --rot/fin se inyectan por JS */
+  animation: particulaVolar 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 51;
+  user-select: none;
+}
+
+@keyframes particulaVolar {
+  0% {
+    transform: translate(0, 0) scale(0.15) rotate(0deg);
+    opacity: 1;
+  }
+  28% {
+    transform: translate(var(--px-mid, 8px), -65px)
+               scale(1.55)
+               rotate(var(--rot, 18deg));
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--px-fin, 20px), var(--py-fin, 145px))
+               scale(0.30)
+               rotate(var(--rot-fin, 55deg));
+    opacity: 0;
+  }
+}
+
+/* Respeto por preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .avion-escena { display: none; }
+}
+
+
+/* ============================================================
+   HERO — Sección de portada
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100svh;           /* 100svh respeta la barra de dirección en móvil */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--sp-8) var(--sp-4) var(--sp-16);
+  gap: var(--sp-5);
+  overflow: hidden;
+  isolation: isolate;           /* nuevo contexto de apilamiento */
+}
+
+/* Halo de luz cálida detrás del título */
+.hero-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(480px, 90vw);
+  height: min(480px, 90vw);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(245, 200, 66, 0.14) 0%,
+    rgba(232, 98,  26, 0.08) 42%,
+    transparent              72%
+  );
+  pointer-events: none;
+  z-index: -1;
+  animation: auratido 4.5s ease-in-out infinite;
+}
+
+/* Transición suave al fondo de la sección siguiente */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 110px;
+  background: linear-gradient(to bottom, transparent, rgba(13, 13, 31, 0.28));
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Banderas ────────────────────────────────────────────── */
+.hero-banderas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-5);
+  font-size: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.bandera {
+  display: inline-block;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+  /* El texto-fill no aplica a emoji — se usa line-height para centrado */
+  line-height: 1;
+}
+
+.bandera-ve { animation: ondearIzq 3.6s ease-in-out infinite; }
+.bandera-cl { animation: ondearDer 3.1s ease-in-out 0.55s infinite; }
+
+.hero-avion {
+  display: inline-block;
+  font-size: 2rem;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.38));
+  animation: volarHero 2.8s ease-in-out infinite;
+}
+
+/* ── Texto del hero ──────────────────────────────────────── */
+.hero-titulo {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(var(--fs-4xl), 12vw, var(--fs-6xl));
+  line-height: 1.08;
+  /* Sombra que da profundidad al texto con shimmer */
+  filter: drop-shadow(0 4px 20px rgba(13, 13, 31, 0.40));
+}
+
+.hero-subtitulo {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-weight: var(--fw-regular);
+  font-size: clamp(var(--fs-lg), 4.5vw, var(--fs-2xl));
+  color: rgba(255, 248, 240, 0.88);
+  line-height: var(--lh-snug);
+  max-width: 34ch;
+}
+
+.hero-detalle {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.hero-tagline {
+  font-size: var(--fs-sm);
+  color: rgba(255, 248, 240, 0.52);
+  letter-spacing: 0.16em;
+  text-transform: lowercase;
+}
+
+/* ── Indicador de scroll ─────────────────────────────────── */
+.hero-scroll {
+  position: absolute;
+  bottom: var(--sp-6);
+  left: 50%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  z-index: 1;
+}
+
+/* La flecha flota independientemente para no romper el centramieto */
+.hero-flecha {
+  display: inline-block;
+  font-size: var(--fs-xl);
+  color: rgba(255, 248, 240, 0.45);
+  line-height: 1;
+  animation: float 2.8s ease-in-out infinite;
+  transition: color var(--trans-base);
+}
+
+.hero-scroll:hover .hero-flecha,
+.hero-scroll:focus .hero-flecha {
+  color: rgba(255, 248, 240, 0.85);
+}
+
+/* ── Keyframes exclusivos del hero ──────────────────────── */
+
+/* Aura: pulsa sin cambiar el translate, para no romper el centrado */
+@keyframes auratido {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 0.65; }
+  50%       { transform: translate(-50%, -50%) scale(1.12); opacity: 1;    }
+}
+
+@keyframes ondearIzq {
+  0%, 100% { transform: translateY(0)     rotate(-5deg) scale(1);    }
+  50%       { transform: translateY(-11px) rotate(3.5deg) scale(1.07); }
+}
+
+@keyframes ondearDer {
+  0%, 100% { transform: translateY(0)     rotate(5deg)  scale(1);    }
+  50%       { transform: translateY(-11px) rotate(-3.5deg) scale(1.07); }
+}
+
+@keyframes volarHero {
+  0%, 100% { transform: translateX(-5px) translateY(0)   rotate(-5deg); }
+  50%       { transform: translateX(5px)  translateY(-8px) rotate(4deg);  }
+}
+
+/* ── Hero responsive ─────────────────────────────────────── */
+@media (min-width: 768px) {
+  .hero-banderas { font-size: 4rem;   gap: var(--sp-8); }
+  .hero-avion    { font-size: 2.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-aura,
+  .bandera-ve,
+  .bandera-cl,
+  .hero-avion,
+  .hero-flecha    { animation: none; }
+  .hero-aura      { opacity: 0.6; transform: translate(-50%, -50%); }
+}
+
+
+/* ============================================================
+   SECCIÓN MENSAJES — contenedor y cabecera
+   ============================================================ */
+
+.seccion--mensajes {
+  padding-block: var(--sp-16) var(--sp-24);
+}
+
+.seccion-cabecera {
+  margin-bottom: var(--sp-12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.seccion-cabecera h2 {
+  font-size: clamp(var(--fs-2xl), 5.5vw, var(--fs-4xl));
+}
+
+.seccion-subtitulo {
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-size: clamp(var(--fs-base), 2.5vw, var(--fs-lg));
+  color: rgba(255, 248, 240, 0.70);
+  margin-top: calc(-1 * var(--sp-2));  /* acerca al h2 */
+}
+
+
+/* ============================================================
+   GRID DE POSTALES
+   ============================================================ */
+
+.grid-postales {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-8);
+}
+
+/* 2 columnas desde 560 px */
+@media (min-width: 560px) {
+  .grid-postales {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-8) var(--sp-10);
+  }
+}
+
+/* 4 columnas desde 960 px */
+@media (min-width: 960px) {
+  .grid-postales {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-8) var(--sp-6);
+  }
+}
+
+
+/* ============================================================
+   POSTAL — estilo polaroid / postal vintage
+   ============================================================ */
+
+.postal {
+  background-color: var(--crema);
+  color: var(--noche);
+  /* Padding polaroid: fino arriba/lados, generoso abajo */
+  padding: 14px 14px 44px;
+  border-radius: 2px;
+  position: relative;
+
+  /* Sombra en 3 capas: borde fino, sombra suave y profundidad */
+  box-shadow:
+    0  1px  2px  rgba(26, 26, 62, 0.16),
+    0  5px  15px rgba(26, 26, 62, 0.20),
+    0 18px  40px rgba(26, 26, 62, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+  /* Estado inicial: oculta y desplazada hacia abajo.
+     La clase .en-vista la añade IntersectionObserver. */
+  opacity: 0;
+  transform: rotate(var(--rot, 0deg)) translateY(48px) scale(0.92);
+  transition:
+    opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
+  will-change: transform, opacity;
+}
+
+/* Franja de color en el borde superior (identidad visual) */
+.postal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--grad-calido);
+  border-radius: 2px 2px 0 0;
+}
+
+/* ── Estado visible (añadido por JS) ── */
+.postal.en-vista {
+  opacity: 1;
+  transform: rotate(var(--rot, 0deg)) translateY(0) scale(1);
+}
+
+/* ── Hover: se endereza, sube y agranda ── */
+.postal:hover {
+  transform: rotate(0deg) translateY(-12px) scale(1.05);
+  box-shadow:
+    0  2px  6px  rgba(26, 26, 62, 0.18),
+    0 14px  36px rgba(26, 26, 62, 0.28),
+    0 32px  72px rgba(26, 26, 62, 0.18);
+  z-index: 10;
+}
+
+/* ── Área de foto / emoji ── */
+.postal-foto {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(
+    140deg,
+    rgba(232, 98,  26, 0.07) 0%,
+    rgba(245,200, 66, 0.14) 50%,
+    rgba(242,139,112, 0.07) 100%
+  );
+  border: 1px solid rgba(26, 26, 62, 0.07);
+  border-radius: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--sp-3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Marcas de esquina estilo foto vintage */
+.postal-foto::before,
+.postal-foto::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: rgba(26, 26, 62, 0.16);
+  border-style: solid;
+  pointer-events: none;
+}
+.postal-foto::before { top: 8px;    left: 8px;    border-width: 1.5px 0 0 1.5px; }
+.postal-foto::after  { bottom: 8px; right: 8px;   border-width: 0 1.5px 1.5px 0; }
+
+.postal-emoji {
+  font-size: 2.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 8px rgba(26, 26, 62, 0.22));
+  animation: pulseSoft 4s ease-in-out infinite;
+  /* Desfasar animación entre postales con una variable inline sería ideal;
+     como no la tenemos, el efecto sutil igualmente queda bonito */
+}
+
+/* ── Cuerpo de texto ── */
+.postal-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+/* Línea punteada decorativa entre foto y texto */
+.postal-cuerpo::before {
+  content: '· · · · · · · · · · · · ·';
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: rgba(26, 26, 62, 0.18);
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: var(--sp-1);
+}
+
+.postal-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Nombre del idioma — etiqueta pequeña en mayúscula */
+.postal-idioma {
+  font-family: var(--font-cuerpo);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-extrabold);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--naranja);
+}
+
+/* Sello filatélico */
+.postal-sello {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  font-size: 1.05rem;
+  line-height: 1;
+  border: 1.5px solid rgba(26, 26, 62, 0.14);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.60);
+  /* Borde perforado de sello: halo claro + borde exterior tenue */
+  box-shadow:
+    0 0 0 3px var(--crema),
+    0 0 0 4.5px rgba(26, 26, 62, 0.10);
+}
+
+/* Frase en cursiva Playfair */
+.postal-frase {
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-size: 0.875rem;    /* 14px — legible en los 4 formatos de grid */
+  line-height: var(--lh-snug);
+  color: var(--noche);
+  margin: 0;
+}
+
+/* Firma pequeña */
+.postal-firma {
+  font-family: var(--font-cuerpo);
+  font-size: var(--fs-xs);
+  color: var(--naranja-oscuro);
+  opacity: 0.72;
+}
+
+/* ── Movimiento reducido: mostrar tarjetas sin transición ── */
+@media (prefers-reduced-motion: reduce) {
+  .postal {
+    opacity: 1;
+    transform: rotate(var(--rot, 0deg));
+    transition: box-shadow 0.3s ease;
+  }
+  .postal:hover {
+    transform: rotate(var(--rot, 0deg)) translateY(-6px);
+  }
+  .postal-emoji { animation: none; }
+}
+
+
+/* ============================================================
+   SECCIÓN GALERÍA DE FOTOS
+   ============================================================ */
+
+.seccion--galeria {
+  padding-block: var(--sp-16) var(--sp-24);
+}
+
+/* Grid: mobile-first 2 columnas → 3 → 4 */
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-8) var(--sp-5);
+  padding-block: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .galeria-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-10) var(--sp-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .galeria-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-10) var(--sp-8);
+  }
+}
+
+/* ── Polaroid ─────────────────────────────────────────────── */
+.foto-polaroid {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+
+  /* Estado inicial — revelado por IntersectionObserver */
+  opacity: 0;
+  transform: rotate(var(--rot, 0deg)) translateY(38px) scale(0.93);
+  transition:
+    opacity   0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.foto-polaroid.revelado {
+  opacity: 1;
+  transform: rotate(var(--rot, 0deg)) translateY(0) scale(1);
+}
+
+.foto-polaroid:hover {
+  transform: rotate(0deg) translateY(-10px) scale(1.06);
+  z-index: 5;
+}
+
+.foto-polaroid:hover .foto-marco {
+  box-shadow:
+    0 6px 22px rgba(26,26,62,0.26),
+    0 22px 56px rgba(26,26,62,0.22);
+}
+
+/* ── Marco: la hoja fotográfica ── */
+.foto-marco {
+  background: #FFFDF8;
+  padding: 10px 10px 40px;   /* padding polaroid: mayor abajo */
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 1px 3px  rgba(26,26,62,0.15),
+    0 5px 16px rgba(26,26,62,0.18),
+    0 14px 38px rgba(26,26,62,0.13),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Franja de color superior: aparece en hover */
+.foto-marco::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--grad-calido);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.foto-polaroid:hover .foto-marco::before { opacity: 1; }
+
+/* Cursor default cuando hay placeholder (no abre modal) */
+.foto-marco--placeholder { cursor: default; }
+
+/* ── Imagen real ── */
+.foto-imagen {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 1px;
+  /* Comienza en negro — el @keyframes revelarFoto la desarrolla */
+  filter: brightness(0);
+}
+
+/* Animación de revelado: disparada cuando el padre recibe .revelado */
+.foto-polaroid.revelado .foto-imagen {
+  animation: revelarFoto 2.2s ease-out forwards;
+  /* animation-delay se inyecta por JS según el índice de columna */
+}
+
+@keyframes revelarFoto {
+  0%   { filter: brightness(0); }
+  18%  { filter: brightness(0.12) contrast(0.45) sepia(0.95); }
+  40%  { filter: brightness(0.42) contrast(0.70) sepia(0.62); }
+  65%  { filter: brightness(0.76) contrast(0.90) sepia(0.25); }
+  85%  { filter: brightness(0.96) contrast(0.98) sepia(0.06); }
+  100% { filter: brightness(1)    contrast(1)    sepia(0);    }
+}
+
+/* ── Placeholder ── */
+.foto-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(
+    140deg,
+    rgba(232, 98,  26, 0.06) 0%,
+    rgba(245,200, 66, 0.12) 50%,
+    rgba(242,139,112, 0.06) 100%
+  );
+  border-radius: 1px;
+  text-align: center;
+}
+
+.foto-ph-icono {
+  width: 34px;
+  height: 34px;
+  color: var(--naranja-oscuro);
+  opacity: 0.52;
+}
+
+.foto-ph-icono svg { width: 100%; height: 100%; }
+
+.foto-ph-texto {
+  font-family: var(--font-cuerpo);
+  font-size: 0.68rem;
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.04em;
+  color: rgba(26,26,62,0.42);
+  line-height: 1.4;
+}
+
+.foto-ph-nombre {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.60rem;
+  color: var(--naranja);
+  opacity: 0.62;
+}
+
+/* ── Caption editable ── */
+.foto-caption {
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-size: 0.80rem;
+  line-height: 1.4;
+  color: var(--noche);
+  text-align: center;
+  padding: var(--sp-2) var(--sp-1);
+  min-height: 2.2em;
+  outline: none;
+  cursor: text;
+  border-bottom: 1px dashed transparent;
+  transition: border-color 0.2s ease;
+}
+
+.foto-caption:focus {
+  border-bottom-color: rgba(26,26,62,0.24);
+}
+
+/* Placeholder del caption cuando no hay texto */
+.foto-caption:empty::before {
+  content: attr(data-placeholder);
+  color: rgba(26,26,62,0.28);
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   MODAL DE FOTO — PANTALLA COMPLETA
+   ============================================================ */
+
+.foto-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.foto-modal.activo {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Fondo oscuro con desenfoque */
+.foto-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 13, 31, 0.93);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.foto-modal-contenido {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+  max-width: 92vw;
+}
+
+/* Zoom de entrada: empieza pequeña → escala a 1 */
+.foto-modal-img {
+  display: block;
+  max-width: 100%;
+  max-height: 82svh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+  transform: scale(0.68);
+  transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.foto-modal.activo .foto-modal-img {
+  transform: scale(1);
+}
+
+.foto-modal-caption {
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-size: var(--fs-base);
+  color: rgba(255,248,240,0.78);
+  text-align: center;
+  max-width: 48ch;
+  margin: 0;
+}
+
+/* Botón X de cierre */
+.foto-modal-cerrar {
+  position: fixed;
+  top: var(--sp-4);
+  right: var(--sp-4);
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radio-full);
+  background: rgba(255,248,240,0.12);
+  color: var(--crema);
+  border: 1px solid rgba(255,248,240,0.22);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background  var(--trans-base),
+    transform   var(--trans-base),
+    outline     var(--trans-base);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.foto-modal-cerrar:hover {
+  background: rgba(255,248,240,0.24);
+  transform: scale(1.1) rotate(90deg);
+}
+
+.foto-modal-cerrar:focus-visible {
+  outline: 2px solid rgba(255,248,240,0.45);
+  outline-offset: 3px;
+}
+
+/* ── Movimiento reducido ── */
+@media (prefers-reduced-motion: reduce) {
+  .foto-polaroid {
+    opacity: 1;
+    transform: rotate(var(--rot, 0deg));
+    transition: transform 0.3s ease;
+  }
+  .foto-polaroid.revelado .foto-imagen {
+    animation: none;
+    filter: none;
+  }
+  .foto-modal-img {
+    transform: scale(1);
+    transition: none;
+  }
+}
+
+
+/* ============================================================
+   SECCIÓN UNET — Cuaderno de la universidad
+   ============================================================ */
+
+/*
+   Esta sección rompe intencionalmente con el tema oscuro/atardecer
+   para evocar el papel físico de un cuaderno universitario.
+   Background: papel crema con líneas azul-celeste y margen rojo.
+*/
+.seccion--unet {
+  /* Papel crema con líneas de cuaderno de rayas anchas */
+  background-color: #fdf8ec;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent calc(1.875rem - 1px),
+    rgba(100, 149, 237, 0.18) calc(1.875rem - 1px),
+    rgba(100, 149, 237, 0.18) 1.875rem
+  );
+  /* Línea roja de margen izquierdo */
+  border-left: none;
+  position: relative;
+  padding-block: var(--sp-16) var(--sp-24);
+  color: var(--noche);
+  /* Borde superior e inferior para separar del fondo oscuro */
+  box-shadow:
+    inset 0  8px 24px rgba(26,26,62,0.08),
+    inset 0 -8px 24px rgba(26,26,62,0.08);
+}
+
+/* Hilo de encuadernación (línea roja de margen) */
+.seccion--unet::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  /* Se posiciona justo en el borde izquierdo del contenedor a ~64px */
+  left: calc(50% - min(490px, 50vw - var(--sp-4)));
+  width: 2px;
+  background: rgba(210, 70, 70, 0.28);
+  pointer-events: none;
+}
+
+/* Overrides de texto para fondo claro */
+.unet-h2       { color: var(--noche); }
+.unet-subtitulo { color: rgba(26, 26, 62, 0.65); }
+
+.etiqueta--oscura {
+  background: rgba(26, 26, 62, 0.08);
+  color: var(--naranja-oscuro);
+  border-color: rgba(26, 26, 62, 0.14);
+}
+
+/* ── Contador de días ─────────────────────────────────────── */
+.contador-card {
+  /* Contraste oscuro sobre el fondo claro — como una pizarra */
+  background: var(--noche);
+  border: 1px solid rgba(245, 200, 66, 0.28);
+  border-radius: var(--radio-xl);
+  padding: var(--sp-8) var(--sp-10);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  max-width: 480px;
+  margin-inline: auto;
+  margin-bottom: var(--sp-12);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(26,26,62,0.22),
+    0 0 0 1px rgba(245,200,66,0.10);
+}
+
+/* Halo dorado detrás del número */
+.contador-card::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px; height: 180px;
+  background: radial-gradient(ellipse, rgba(245,200,66,0.09) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contador-label-sup {
+  font-family: var(--font-cuerpo);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,248,240,0.48);
+}
+
+.contador-num {
+  display: block;
+  font-family: var(--font-titulo);
+  font-size: clamp(4rem, 14vw, 7.5rem);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  /* Gradiente dorado-coral en el número */
+  background: linear-gradient(135deg, var(--dorado), var(--coral) 55%, var(--naranja));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.contador-label-inf {
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-size: clamp(var(--fs-base), 3vw, var(--fs-xl));
+  color: rgba(255,248,240,0.78);
+}
+
+.contador-fecha-desde {
+  font-family: var(--font-cuerpo);
+  font-size: var(--fs-xs);
+  color: rgba(255,248,240,0.38);
+  letter-spacing: 0.08em;
+  margin-top: var(--sp-1);
+}
+
+/* ── Timeline horizontal (desktop) / vertical (mobile) ───── */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: row;           /* horizontal en desktop */
+  gap: 0;
+  padding-top: var(--sp-6);     /* espacio para la línea conectora */
+  padding-bottom: var(--sp-4);
+}
+
+/*
+   Línea horizontal que conecta todos los nodos.
+   left / right = 10% = centro del primer / último item
+   (con 5 items cada uno ocupa 20%, su centro cae en 10%, 30%, 50%, 70%, 90%)
+*/
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--sp-6) + 28px);  /* padding-top + mitad del nodo (56px÷2) */
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--naranja),
+    var(--dorado) 50%,
+    var(--naranja)
+  );
+  border-radius: 2px;
+  z-index: 0;
+}
+
+/* ── Item de timeline ── */
+.timeline-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Estado inicial para la animación de entrada */
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+/* Clase añadida por IntersectionObserver */
+.timeline-item.tl-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Nodo (círculo con emoji) ── */
+.timeline-nodo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  /* Mismo color que el fondo de la sección → "corta" la línea */
+  background: #fdf8ec;
+  border: 3px solid var(--naranja);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(26,26,62,0.15);
+  transition:
+    transform   0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.3s ease,
+    box-shadow  0.3s ease;
+}
+
+.timeline-item:hover .timeline-nodo {
+  transform: scale(1.18);
+  border-color: var(--dorado);
+  box-shadow: 0 4px 18px rgba(232,98,26,0.32);
+}
+
+/* ── Conector vertical nodo → tarjeta ── */
+.timeline-conector {
+  width: 2px;
+  height: var(--sp-5);
+  background: var(--naranja);
+  opacity: 0.30;
+  flex-shrink: 0;
+}
+
+/* ── Tarjeta estilo cuaderno ── */
+.timeline-tarjeta {
+  width: 100%;
+  flex: 1;
+  padding: var(--sp-4) var(--sp-4) var(--sp-4) calc(var(--sp-8) + 4px);
+  border-radius: 2px;
+  position: relative;
+
+  /* Papel cuadriculado: líneas horizontales + margen rojo vertical */
+  background-color: #fef9e4;
+  background-image:
+    /* Línea roja de margen */
+    linear-gradient(
+      to right,
+      transparent 38px,
+      rgba(210, 70, 70, 0.28) 38px,
+      rgba(210, 70, 70, 0.28) 40px,
+      transparent 40px
+    ),
+    /* Líneas de cuaderno */
+    repeating-linear-gradient(
+      transparent,
+      transparent calc(1.6em - 1px),
+      rgba(100, 149, 237, 0.22) calc(1.6em - 1px),
+      rgba(100, 149, 237, 0.22) 1.6em
+    );
+
+  /* Sombra tipo hoja de papel */
+  box-shadow:
+    1px 2px 3px  rgba(0,0,0,0.09),
+    3px 5px 14px rgba(0,0,0,0.06),
+    inset -1px 0 0 rgba(0,0,0,0.03);
+
+  /* Leve inclinación individual (overridden on hover) */
+  transform: rotate(var(--card-rot, 0deg));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover .timeline-tarjeta {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow:
+    2px 4px 8px  rgba(0,0,0,0.13),
+    5px 10px 24px rgba(0,0,0,0.09);
+}
+
+/* Esquina doblada decorativa (dog-ear) */
+.timeline-tarjeta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 16px 16px 0;
+  border-color: transparent #fdf8ec transparent transparent;
+  filter: drop-shadow(-1px 1px 1px rgba(0,0,0,0.10));
+}
+
+.timeline-titulo {
+  font-family: var(--font-titulo);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  color: var(--naranja-oscuro);
+  margin-bottom: var(--sp-2);
+  line-height: var(--lh-tight);
+}
+
+.timeline-texto {
+  font-family: var(--font-cuerpo);
+  font-size: var(--fs-sm);
+  line-height: 1.6em;     /* alineado con las líneas del cuaderno */
+  color: rgba(26, 26, 62, 0.80);
+  margin: 0;
+}
+
+/* ── Timeline VERTICAL en mobile ─────────────────────────── */
+@media (max-width: 767px) {
+  .timeline {
+    flex-direction: column;
+    gap: 0;
+    padding: 0 0 0 var(--sp-4);
+    margin-left: 0;
+  }
+
+  /*
+     Línea vertical: usa el ::before reposicionado.
+     left = padding-left(16px) + mitad del nodo(22px) - mitad de línea(1.5px)
+  */
+  .timeline::before {
+    top: 22px;
+    bottom: 22px;
+    left: calc(var(--sp-4) + 22px - 1.5px);
+    right: auto;
+    width: 3px;
+    height: auto;
+  }
+
+  /* Cada item: ícono a la izquierda, tarjeta a la derecha */
+  .timeline-item {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--sp-3);
+    padding-bottom: var(--sp-8);
+  }
+
+  /* Nodo más compacto en mobile */
+  .timeline-nodo {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  .timeline-conector { display: none; }
+  .timeline-tarjeta  { flex: 1; min-width: 0; }
+}
+
+/* ── Movimiento reducido ── */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .contador-num { animation: none; }
+}
+
+
+/* ============================================================
+   FIXES GLOBALES DE RESPONSIVIDAD
+   ============================================================ */
+
+/* Impedir que items de grid/flex rompan el layout */
+.postal,
+.foto-polaroid,
+.timeline-tarjeta { min-width: 0; }
+
+/* Hero: las banderas no deben desbordar en pantallas de 320px */
+.hero-banderas { flex-wrap: wrap; }
+
+/* Contador: reducir padding en móvil muy pequeño */
+@media (max-width: 420px) {
+  .contador-card { padding: var(--sp-6); }
+  .contador-num  { font-size: clamp(3rem, 18vw, 5rem); }
+}
+
+/* Imágenes del modal nunca salen del viewport */
+.foto-modal-img { max-width: min(90vw, 900px); }
+
+/* Tarjeta UNET no desborda en mobile */
+.timeline-tarjeta { max-width: 100%; }
+
+
+/* ============================================================
+   CARTA DE ENTRADA — Animación de bienvenida
+   ============================================================ */
+
+.carta-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: all;
+  /* El fondo lo dan las dos mitades; el overlay es solo el contenedor */
+}
+
+/* ── Mitades superior e inferior ── */
+.carta-mitad {
+  position: absolute;
+  left: 0; right: 0;
+  height: 50%;
+  transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.carta-mitad--sup {
+  top: 0;
+  background: linear-gradient(to bottom, var(--noche-profundo), var(--noche-medio));
+  border-bottom: 1px solid rgba(245, 200, 66, 0.20);
+}
+
+.carta-mitad--inf {
+  bottom: 0;
+  background: linear-gradient(to top, var(--noche-profundo), var(--noche-medio));
+  border-top: 1px solid rgba(245, 200, 66, 0.20);
+}
+
+/* Estado "saliendo": las mitades se separan */
+.carta-overlay.saliendo .carta-mitad--sup { transform: translateY(-100%); }
+.carta-overlay.saliendo .carta-mitad--inf { transform: translateY(100%);  }
+.carta-overlay.saliendo .carta-centro {
+  opacity: 0;
+  transform: translate(-50%, -46%) scale(0.9);
+}
+
+/* ── Contenido central ── */
+.carta-centro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  pointer-events: none;
+  animation: cartaCentroEntrar 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+@keyframes cartaCentroEntrar {
+  from { opacity: 0; transform: translate(-50%, -46%) scale(0.65); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1);    }
+}
+
+.carta-emoji {
+  font-size: clamp(3rem, 14vw, 5.5rem);
+  line-height: 1;
+  animation: float 2.2s ease-in-out infinite;
+}
+
+.carta-nombre {
+  font-family: var(--font-titulo);
+  font-size: clamp(2rem, 9vw, 3.5rem);
+  font-weight: var(--fw-bold);
+  line-height: 1.1;
+  background: linear-gradient(90deg, var(--dorado), var(--coral), var(--dorado));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerTexto 2.5s linear infinite;
+}
+
+.carta-sub {
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-size: clamp(0.875rem, 4vw, 1.2rem);
+  color: rgba(255, 248, 240, 0.65);
+}
+
+/* Saltar animación si el usuario prefiere movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .carta-overlay { display: none !important; }
+}
+
+
+/* ============================================================
+   REPRODUCTOR MINIMALISTA
+   ============================================================ */
+
+.reproductor {
+  position: fixed;
+  bottom: var(--sp-6);
+  left: var(--sp-4);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: rgba(26, 26, 62, 0.90);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(245, 200, 66, 0.24);
+  border-radius: var(--radio-full);
+  padding: var(--sp-2) var(--sp-3);
+  box-shadow: var(--sombra-lg);
+  transition: transform var(--trans-base), opacity var(--trans-base);
+}
+
+.reproductor:hover { transform: translateY(-3px); }
+
+/* Botón play / pause */
+.rep-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--grad-calido);
+  color: var(--noche);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease-rebote);
+}
+
+.rep-btn:hover  { transform: scale(1.14); }
+.rep-btn:active { transform: scale(0.90); }
+.rep-btn:focus-visible { outline: 2px solid var(--dorado); outline-offset: 3px; }
+.rep-btn svg { width: 16px; height: 16px; pointer-events: none; }
+
+/* Barras de onda */
+.rep-ola {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 18px;
+}
+
+.rep-barra {
+  display: block;
+  width: 3px;
+  height: 4px;
+  background: var(--dorado);
+  border-radius: 2px;
+  transform-origin: bottom center;
+  opacity: 0.32;
+  transition: opacity 0.3s ease;
+}
+
+/* Animación de ola cuando está reproduciendo */
+.reproductor.tocando .rep-barra { opacity: 1; }
+
+.reproductor.tocando .rep-barra:nth-child(1) { animation: repOla 0.8s ease-in-out 0.00s infinite alternate; --ola-h: scaleY(2.0); }
+.reproductor.tocando .rep-barra:nth-child(2) { animation: repOla 0.8s ease-in-out 0.16s infinite alternate; --ola-h: scaleY(3.8); }
+.reproductor.tocando .rep-barra:nth-child(3) { animation: repOla 0.8s ease-in-out 0.32s infinite alternate; --ola-h: scaleY(5.2); }
+.reproductor.tocando .rep-barra:nth-child(4) { animation: repOla 0.8s ease-in-out 0.16s infinite alternate; --ola-h: scaleY(3.4); }
+.reproductor.tocando .rep-barra:nth-child(5) { animation: repOla 0.8s ease-in-out 0.08s infinite alternate; --ola-h: scaleY(1.8); }
+
+@keyframes repOla {
+  from { transform: scaleY(1); }
+  to   { transform: var(--ola-h, scaleY(4)); }
+}
+
+.rep-nota { font-size: 1rem; line-height: 1; }
+
+
+/* ============================================================
+   BOTÓN FLOTANTE "💌 ENVIAR AMOR"
+   ============================================================ */
+
+.btn-amor {
+  position: fixed;
+  bottom: var(--sp-6);
+  right: var(--sp-4);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-5);
+  background: var(--grad-calido);
+  color: var(--noche);
+  font-family: var(--font-cuerpo);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  border: none;
+  border-radius: var(--radio-full);
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--sombra-lg), 0 0 0 3px rgba(245,200,66,0.22);
+  animation: float 3s ease-in-out infinite;
+  transition: transform var(--trans-base), box-shadow var(--trans-base);
+}
+
+.btn-amor:hover {
+  transform: translateY(-5px) scale(1.06);
+  box-shadow: var(--sombra-xl), var(--brillo-naranja), 0 0 0 4px rgba(245,200,66,0.35);
+  animation-play-state: paused;
+}
+
+.btn-amor:active { transform: scale(0.94); }
+.btn-amor:focus-visible { outline: 2px solid var(--noche); outline-offset: 3px; }
+
+/* En pantallas muy pequeñas: sólo el emoji */
+@media (max-width: 359px) {
+  .btn-amor-txt { display: none; }
+  .btn-amor     { padding: var(--sp-3); }
+}
+
+/* ── Partículas de confeti (creadas dinámicamente por JS) ── */
+.confeti-p {
+  position: fixed;
+  left: 0; top: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 9998;
+  line-height: 1;
+  will-change: transform, opacity;
+}
+
+/* Reducción de movimiento: ocultar botón flotante y reproductor también */
+@media (prefers-reduced-motion: reduce) {
+  .btn-amor { animation: none; }
+  .rep-barra { animation: none !important; opacity: 0.8; }
+}
